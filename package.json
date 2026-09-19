@@ -1,0 +1,17 @@
+{
+  "name": "agy-chrome-dup-tabs",
+  "version": "1.0.0",
+  "description": "Chrome extension to find and manage duplicate tabs across windows and tab groups with smart URL normalization.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "keywords": [
+    "chrome-extension",
+    "duplicate-tabs",
+    "tab-groups",
+    "tab-manager"
+  ],
+  "author": "",
+  "license": "MIT"
+}

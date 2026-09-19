@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Tab Deduplicator</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-main">
+        <div class="logo-area">
+          <img src="../icons/icon-48.png" alt="Icon" class="app-icon">
+          <div class="title-group">
+            <h1>Duplicate Tabs</h1>
+            <span id="statSubtitle" class="stat-subtitle">Scanning all windows...</span>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="popoutBtn" class="icon-btn" title="Pop out into a separate window (stays open while switching tabs)" aria-label="Pop out into separate window">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </button>
+          <button id="refreshBtn" class="icon-btn" title="Refresh tabs" aria-label="Refresh tabs">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 4v6h-6M1 20v-6h6"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls & Mode Selector -->
+      <div class="controls-bar">
+        <div class="search-box">
+          <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Filter duplicates or groups..." aria-label="Filter duplicates">
+          <button id="clearSearchBtn" class="clear-search-btn hidden" aria-label="Clear filter">&times;</button>
+        </div>
+        
+        <div class="mode-toggle">
+          <label class="toggle-label" title="Smart mode normalizes Google Docs/Sheets and strips tracking query parameters">
+            <input type="checkbox" id="smartModeToggle" checked>
+            <span class="toggle-slider"></span>
+            <span id="modeText" class="mode-text">Smart Match</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Quick Action Summary Banner -->
+      <div id="summaryBanner" class="summary-banner hidden">
+        <div class="summary-info">
+          <span id="duplicatesCountBadge" class="count-badge">0</span>
+          <span id="summaryText">duplicate tabs found</span>
+        </div>
+        <button id="cleanAllBtn" class="clean-all-btn" title="Close all redundant tabs, keeping one tab per section">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+          </svg>
+          <span>Clean All</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content: Duplicate Clusters -->
+    <main id="clustersContainer" class="clusters-container">
+      <!-- Loading State -->
+      <div id="loadingState" class="state-container">
+        <div class="spinner"></div>
+        <p>Scanning tabs across all windows and groups...</p>
+      </div>
+
+      <!-- Empty / Clean State -->
+      <div id="emptyState" class="state-container hidden">
+        <div class="clean-icon-circle">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h2>All Clean!</h2>
+        <p>No duplicate tabs found across your open windows and tab groups.</p>
+      </div>
+
+      <!-- No Search Results State -->
+      <div id="noResultsState" class="state-container hidden">
+        <p>No duplicates match your search filter.</p>
+      </div>
+
+      <!-- Duplicate Sections List -->
+      <div id="duplicateSections" class="duplicate-sections"></div>
+    </main>
+
+    <!-- Confirmation Modal for "Clean All" -->
+    <div id="confirmModal" class="modal-backdrop hidden">
+      <div class="modal-dialog">
+        <h3>Close Duplicate Tabs?</h3>
+        <p id="modalMessage">This will close all redundant duplicate tabs, preserving the first/grouped tab in each section.</p>
+        <div class="modal-actions">
+          <button id="cancelModalBtn" class="btn btn-secondary">Cancel</button>
+          <button id="confirmCleanBtn" class="btn btn-danger">Yes, Close Duplicates</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

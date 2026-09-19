@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Tab Deduplicator & Group Manager",
+  "version": "1.0.0",
+  "description": "Find and clean duplicate tabs across all windows and tab groups with smart URL normalization for Google Docs, Sheets, and more.",
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Smart Tab Deduplicator",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

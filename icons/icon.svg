@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="112" height="112" rx="24" fill="url(#bgGrad)" />
+  <!-- Back tab -->
+  <rect x="22" y="26" width="56" height="46" rx="6" fill="#ffffff" fill-opacity="0.75" />
+  <!-- Front tab -->
+  <rect x="42" y="46" width="60" height="48" rx="8" fill="#ffffff" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.2))" />
+  <rect x="42" y="46" width="60" height="12" rx="8" fill="#e0e7ff" />
+  <!-- Dedupe cross / indicator dot -->
+  <circle cx="72" cy="74" r="10" fill="#f59e0b" />
+  <path d="M68 70 L76 78 M76 70 L68 78" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
