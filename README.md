@@ -2,6 +2,8 @@
 
 A Manifest V3 Google Chrome extension designed for users with heavy tab usage, multiple windows, and tab groups. It identifies duplicate tabs across all windows and groups, uses smart URL canonicalization (for Google Docs, Google Sheets, tracking parameters, and hash fragments), displays native group color badges, and lets you close redundant tabs directly from the popup menu.
 
+![Popup screenshot](image.png)
+
 ---
 
 ## Key Features
